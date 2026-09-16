@@ -87,7 +87,10 @@ jobs:
         bash $GITHUB_WORKSPACE/$Feeds_SH
 
     - name: 更新拉取源
-      run: cd lede && ./scripts/feeds update -a
+      run: cd lede         echo 'src-git nikki https://github.com/nikkinikki-org/nikki-feed.git;openwrt-24.10' >> feeds.conf.default
+        ./scripts/feeds update nikki
+        ./scripts/feeds install nikki
+&& ./scripts/feeds update -a
 
     - name: 安装拉取源
       run: cd lede && ./scripts/feeds install -a
